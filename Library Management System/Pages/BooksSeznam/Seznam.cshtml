@@ -1,5 +1,5 @@
-﻿@page
-@model Library_Management_System.Pages.SeznamModel
+﻿@page "/Seznam"
+@model Library_Management_System.Pages.BooksSeznam.SeznamModel
 
 @{
     ViewData["Title"] = "Seznam";
@@ -8,7 +8,7 @@
 <h1>Seznam</h1>
 
 <p>
-    <a asp-page="AddBook">Create New</a>
+    <a asp-page="./AddBook">Create New</a>
 </p>
 <table class="table">
     <thead>
@@ -44,9 +44,9 @@
                 @Html.DisplayFor(modelItem => item.Genre)
             </td>
             <td>
-                <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
-                <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
-                <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                    <a asp-page="./EditBook" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./DeleteBook" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
 }
