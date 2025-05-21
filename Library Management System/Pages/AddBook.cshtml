@@ -1,0 +1,45 @@
+﻿@page
+@model Library_Management_System.Pages.AddBookModel
+
+@{
+ViewData["Title"] = "AddBook";
+}
+        
+<h1>Add Book</h1>
+
+<form method="post" class="w-50 m-auto my-5">
+    <div class="form-floating mb-3">
+        <input asp-for="Book.Title" type="text" class="form-control" id="floatingTitle" placeholder="Title">
+        <label for="floatingTitle">Title</label>
+        <span asp-validation-for="Book.Title" class="text-danger"></span>
+    </div>
+    <div class="form-floating mb-3">
+        <input asp-for="Book.Author" type="text" class="form-control" id="floatingAuthor" placeholder="Author">
+        <label for="floatingAuthor">Author</label>
+        <span asp-validation-for="Book.Author" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Book.YearPublished" type="date" class="form-control" id="floatingYearPublished" placeholder="YearPublished">
+        <label for="floatingYearPublished">YearPublished</label>
+        <span asp-validation-for="Book.YearPublished" class="text-danger"></span>
+    </div>
+
+    <div class="form-floating mb-3">
+        <input asp-for="Book.Genre" type="text" class="form-control" id="floatingGenre" placeholder="Genre">
+        <label for="floatingGenre">Genre</label>
+        <span asp-validation-for="Book.Genre" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-secondary btn-outline-light w-50">Odeslat</button>
+</form>
+       
+    
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
