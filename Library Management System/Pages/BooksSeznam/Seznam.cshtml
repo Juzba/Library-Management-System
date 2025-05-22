@@ -5,25 +5,56 @@
     ViewData["Title"] = "Seznam";
 }
 
-<h1>Seznam</h1>
+<h1 class="my-5 text-sm-center">Seznam</h1>
+
+
+<form method="get" class="my-3 w-50">
+    <div class="d-flex">
+        <span class="input-group-text my-2" id="basic-addon1">Search by:</span>
+        <select class="form-select my-2 ms-2" name="SearchBy" aria-label="Default select example ">
+        <option value="1"  >Title</option>
+        <option value="2" >Id</option>
+        <option value="3" >Author</option>
+        <option value="4" >YearPublished</option>
+        <option value="5" >Genre</option>
+</select>
+    </div>
+    <div class="d-flex">
+        <input type="text" name="SearchText" value="@Model.SearchText" class="form-control my-2" placeholder="Zadejte hledaný výraz..." />
+        <button class="btn btn-primary ms-2 my-2" type="submit">Hledat</button>
+    </div>
+</form>
 
 <p>
     <a asp-page="./AddBook">Create New</a>
 </p>
-<table class="table">
+<table class="table" style="min-width: 1000px">
     <thead>
         <tr>
             <th>
+                <a asp-page="./Seznam" asp-route-id="0">
+                @Html.DisplayNameFor(model => model.Book[0].Id)
+                </a>
+            </th>
+            <th>
+                <a asp-page="./Seznam" asp-route-id="1">
                 @Html.DisplayNameFor(model => model.Book[0].Title)
+                </a>
             </th>
             <th>
+                <a asp-page="./Seznam" asp-route-id="2">
                 @Html.DisplayNameFor(model => model.Book[0].Author)
+                </a>
             </th>
             <th>
+                <a asp-page="./Seznam" asp-route-id="3">
                 @Html.DisplayNameFor(model => model.Book[0].YearPublished)
+                </a>
             </th>
             <th>
+                <a asp-page="./Seznam" asp-route-id="4">
                 @Html.DisplayNameFor(model => model.Book[0].Genre)
+                </a>
             </th>
             <th></th>
         </tr>
@@ -31,6 +62,9 @@
     <tbody>
 @foreach (var item in Model.Book) {
         <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Title)
             </td>
@@ -45,7 +79,7 @@
             </td>
             <td>
                     <a asp-page="./EditBook" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./DetailsBook" asp-route-id="@item.Id">Details</a> |
                     <a asp-page="./DeleteBook" asp-route-id="@item.Id">Delete</a>
             </td>
         </tr>
