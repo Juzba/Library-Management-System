@@ -45,7 +45,7 @@ namespace Library_Management_System.Pages.BooksSeznam
                     Book = await _context.Books.Where(p => p.Genre.Contains(SearchText)).ToListAsync();
                     break;
                 default:
-                    Book = await _context.Books.Where(p => p.Title.Contains(SearchText)).ToListAsync();
+                    Book = await _context.Books.ToListAsync();
                     break;
             }
 
